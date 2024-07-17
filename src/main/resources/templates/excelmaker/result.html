@@ -20,7 +20,8 @@
 <nav id="navbar-example2" class="navbar bg-success px-3 mb-3">
     <a class="navbar-brand text-white fs-2 text">Excel Maker<span style="font-size:50%;"> for Car Master</span></a>
 </nav>
-<form action="/excelMake" method="post">
+<h3 style="text-align:center;">아래와 같은 정보로 엑셀 파일이 정상적으로 생성되었습니다.</h3>
+<hr>
     <div style="width:50%; margin:0 auto;">
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading1">계약일</h6><hr style="border-top:1px solid black;">
@@ -92,11 +93,8 @@
             <input type="text" id="carNumber" name="carNumber" th:value="${inputData.carNumber}" readonly>
         </div>
         <br>
-        <button type="submit" class="btn btn-outline-success" style="width:49%;">엑셀생성</button>
-        <button type="reset" class="btn btn-outline-danger" style="width:49%;">수정하기</button>
-
+        <button type="button" onclick="location.href='/index.html'" class="btn btn-outline-success" style="width:100%;">홈으로</button>
     </div>
-</form>
 <br>
 <footer class="py-5 bg-success mt-auto">
     <div class="container">
