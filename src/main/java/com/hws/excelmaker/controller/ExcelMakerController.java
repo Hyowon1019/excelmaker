@@ -22,7 +22,7 @@ public class ExcelMakerController {
     }
 
     @PostMapping("/check")
-    public String inputDataChecker(Model model, @RequestParam("contractDate") String contractDate, @RequestParam("customerName") String customerName, @RequestParam("belong") String belong, @RequestParam("carName") String carName,
+    public String check(Model model, @RequestParam("contractDate") String contractDate, @RequestParam("customerName") String customerName, @RequestParam("belong") String belong, @RequestParam("carName") String carName,
                                    @RequestParam("carPrice") Integer carPrice, @RequestParam("releaseStore") String releaseStore, @RequestParam("charge") Integer charge, @RequestParam("progress") String progress,
                                    @RequestParam("cashBack") Integer cashBack, @RequestParam("releasePlace") String releasePlace, @RequestParam("supportContents") String supportContents, @RequestParam("etcContents") String etcContents,
                                    @RequestParam("enrollDate") String enrollDate, @RequestParam("carNumber") String carNumber) throws IOException {
@@ -37,7 +37,7 @@ public class ExcelMakerController {
     }
 
     @PostMapping("/make")
-    public String excelMaker(Model model, @RequestParam("contractDate") String contractDate, @RequestParam("customerName") String customerName, @RequestParam("belong") String belong,
+    public String make(Model model, @RequestParam("contractDate") String contractDate, @RequestParam("customerName") String customerName, @RequestParam("belong") String belong,
                              @RequestParam("carName") String carName, @RequestParam("carPrice") Integer carPrice, @RequestParam("releaseStore") String releaseStore,
                              @RequestParam("charge") Integer charge, @RequestParam("progress") String progress, @RequestParam("cashBack") Integer cashBack,
                              @RequestParam("releasePlace") String releasePlace, @RequestParam("supportContents") String supportContents, @RequestParam("etcContents") String etcContents,
@@ -47,13 +47,20 @@ public class ExcelMakerController {
 
         model.addAttribute("inputData", inputData);
 
+        // if 문 활용하여 만약 기존 파일이 있으면 이어서 작성, 없으면 새로 생성하여 작성(새로하는건 이미 아래와 같이 만들어져 있음) Integer myRow = sheet0.getLastRowNum(); -> @@@@@@@@@@@@@@@@@@@@@@@@@이런식으로 마지막 행 얻기 (마지막 열 얻는 방법도 같음.)
+        //validation 구현
+        // PRG 처리하기.
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        // 파일 덮어써지지 않도록 보완하기(새로 생성하는 것이 아닌 이미 해당 이름의 파일이 있다면, 불러와서 아래 행부터 추가하는 것으로 수정)
+        // 같은 POST로 요청시에 PRG관련하여 오류 막을 것.
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
         Workbook workBook = new XSSFWorkbook();
 
         Sheet sheet0 = workBook.createSheet("고객정보");
 
         Row row0 = sheet0.createRow(0);
-        // Integer myRow = sheet0.getLastRowNum(); -> @@@@@@@@@@@@@@@@@@@@@@@@@이런식으로 마지막 행 얻기 (마지막 열 얻는 방법도 같음.)
-        // PRG 처리하기.
+
 
         row0.createCell(0).setCellValue(contractDate);
         row0.createCell(1).setCellValue(customerName);
@@ -69,11 +76,6 @@ public class ExcelMakerController {
         row0.createCell(11).setCellValue(etcContents);
         row0.createCell(12).setCellValue(enrollDate);
         row0.createCell(13).setCellValue(carNumber);
-
-        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        // 파일 덮어써지지 않도록 보완하기(새로 생성하는 것이 아닌 이미 해당 이름의 파일이 있다면, 불러와서 아래 행부터 추가하는 것으로 수정)
-        // 같은 POST로 요청시에 PRG관련하여 오류 막을 것.
-        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         FileOutputStream fos = new FileOutputStream("C:\\myDev\\mine.xlsx");
         workBook.write(fos);
