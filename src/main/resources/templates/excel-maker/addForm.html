@@ -20,81 +20,85 @@
 <nav id="navbar-example2" class="navbar bg-success px-3 mb-3">
     <a class="navbar-brand text-white fs-2 text">Excel Maker<span style="font-size:50%;"> for Car Master</span></a>
 </nav>
-<h3 style="text-align:center;">아래와 같은 정보로 엑셀 파일이 정상적으로 생성되었습니다.</h3>
-<hr>
+<form action="/excel-maker/check" method="post">
     <div style="width:50%; margin:0 auto;">
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading1">계약일</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="contractDate" name="contractDate" class="datepicker mr-2" th:value="${inputData.contractDate}" readonly>
+            <div class="form-group">
+                <input type="text" id="contractDate" name="contractDate" class="datepicker mr-2" placeholder="달력에서 날짜 고르기">
+            </div>
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading2">고객명</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="customerName" name="customerName" th:value="${inputData.customerName}" readonly>
+            <input type="text" id="customerName" name="customerName">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading3">소속/납기</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="belong" name="belong" th:value="${inputData.belong}" readonly>
+            <input type="text" id="belong" name="belong">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading4">차종</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="carName" name="carName" th:value="${inputData.carName}" readonly>
+            <input type="text" id="carName" name="carName">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading5">가격</h6><hr style="border-top:1px solid black;">
-            <input type="number" id="carPrice" name="carPrice" th:value="${inputData.carPrice}" readonly>원
+            <input type="number" id="carPrice" name="carPrice">원
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading6">출고점</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="releaseStore" name="releaseStore" th:value="${inputData.releaseStore}" readonly>
+            <input type="text" id="releaseStore" name="releaseStore">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading7">수수료(자동계산)</h6><hr style="border-top:1px solid black;">
-            <input type="number" id="charge" name="charge" th:value="${inputData.charge}" readonly>
+            <input type="number" id="charge" name="charge">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading8">진행도</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="progress" name="progress" th:value="${inputData.progress}" readonly>
+            <input type="text" id="progress" name="progress">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading9">고객캐쉬백</h6><hr style="border-top:1px solid black;">
-            <input type="number" id="cashBack" name="cashBack" th:value="${inputData.cashBack}" readonly>원
+            <input type="number" id="cashBack" name="cashBack">원
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading10">코일/출고장</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="releasePlace" name="releasePlace" th:value="${inputData.releasePlace}" readonly>
+            <input type="text" id="releasePlace" name="releasePlace">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading11">지원내용</h6><hr style="border-top:1px solid black;">
-            <textarea id="supportContents" name="supportContents" th:text="${inputData.supportContents}" readonly></textarea>
+            <textarea id="supportContents" name="supportContents"></textarea>
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading12">기타내용</h6><hr style="border-top:1px solid black;">
-            <textarea id="etcContents" name="etcContents" th:text="${inputData.etcContents}" readonly></textarea>
+            <textarea id="etcContents" name="etcContents"></textarea>
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading13">등록일/완결</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="enrollDate" name="enrollDate" th:value="${inputData.enrollDate}" readonly>
+            <input type="text" id="enrollDate" name="enrollDate">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading14">차량번호</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="carNumber" name="carNumber" th:value="${inputData.carNumber}" readonly>
+            <input type="text" id="carNumber" name="carNumber">
         </div>
         <br>
-        <button type="button" onclick="location.href='/index.html'" class="btn btn-outline-success" style="width:100%;">홈으로</button>
+        <button type="submit" class="btn btn-outline-success" style="width:49%;">입력</button>
+        <button type="reset" class="btn btn-outline-danger" style="width:49%;">초기화</button>
+
     </div>
+</form>
 <br>
 <footer class="py-5 bg-success mt-auto">
     <div class="container">
@@ -102,4 +106,13 @@
     </div>
 </footer>
 </body>
+<script>
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        todayHighlight: true,
+        toggleActive: true
+    });
+  });
+</script>
 </html>
