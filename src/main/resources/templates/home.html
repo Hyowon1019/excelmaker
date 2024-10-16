@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/css/bootstrap.min.css}" href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+    .row1 {
+    text-align:center;
+    margin-top:10%;
+    }
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row1">
+    <button type="button" th:onclick="|location.href='@{/excelmaker}'|" class="btn btn-success" disabled>엑셀 생성기 시작</button>
+    <button class="btn btn-primary" type="button" th:onclick="|location.href='@{/login}'|">로그인</button>
+    <button class="btn btn-warning" type="button" th:onclick="|location.href='@{/members/add}'|">회원 가입</button>
+</div>
+</body>
+<script>
+  function goExcelMaker() {
+    location.href="/excelmaker";
+  }
+</script>
+</html>

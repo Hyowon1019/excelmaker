@@ -11,7 +11,7 @@ public class ExcelData {
     private String carName;
     private Integer carPrice;
     private String releaseStore;
-    private Integer charge;
+    private Double charge;
     private String progress;
     private Integer cashBack;
     private String releasePlace;
@@ -20,7 +20,7 @@ public class ExcelData {
     private String enrollDate;
     private String carNumber;
 
-    public ExcelData(String contractDate, String customerName, String belong, String carName, Integer carPrice, String releaseStore, Integer charge, String progress, Integer cashBack, String releasePlace, String supportContents, String etcContents, String enrollDate, String carNumber) {
+    public ExcelData(String contractDate, String customerName, String belong, String carName, Integer carPrice, String releaseStore, Double charge, String progress, Integer cashBack, String releasePlace, String supportContents, String etcContents, String enrollDate, String carNumber) {
         this.contractDate = contractDate;
         this.customerName = customerName;
         this.belong = belong;

@@ -20,18 +20,18 @@
 <nav id="navbar-example2" class="navbar bg-success px-3 mb-3">
     <a class="navbar-brand text-white fs-2 text">Excel Maker<span style="font-size:50%;"> for Car Master</span></a>
 </nav>
-<form action="/excel-maker/check" method="post">
+<form action="/excelmaker/info" method="post">
     <div style="width:50%; margin:0 auto;">
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading1">계약일</h6><hr style="border-top:1px solid black;">
             <div class="form-group">
-                <input type="text" id="contractDate" name="contractDate" class="datepicker mr-2" placeholder="달력에서 날짜 고르기">
+                <input type="text" id="contractDate" name="contractDate" class="datepicker mr-2" placeholder="날짜 선택">에 계약
             </div>
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading2">고객명</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="customerName" name="customerName">
+            <input type="text" id="customerName" name="customerName"> 님
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
@@ -46,7 +46,7 @@
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading5">가격</h6><hr style="border-top:1px solid black;">
-            <input type="number" id="carPrice" name="carPrice">원
+            <input type="number" id="carPrice" name="carPrice"> 원
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
@@ -55,8 +55,8 @@
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
-            <h6 id="scrollspyHeading7">수수료(자동계산)</h6><hr style="border-top:1px solid black;">
-            <input type="number" id="charge" name="charge">
+            <h6 id="scrollspyHeading7">수수료(%) 입력</h6><hr style="border-top:1px solid black;">
+            <input type="number" step="0.1" id="charge" name="charge"> %
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
@@ -66,7 +66,7 @@
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading9">고객캐쉬백</h6><hr style="border-top:1px solid black;">
-            <input type="number" id="cashBack" name="cashBack">원
+            <input type="number" id="cashBack" name="cashBack"> 원
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">

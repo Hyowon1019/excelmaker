@@ -16,7 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/excel-maker")
+@RequestMapping("/excelmaker")
 @RequiredArgsConstructor
 public class ExcelMakerController {
 
@@ -25,13 +25,13 @@ public class ExcelMakerController {
     //생성자 하나이므로 @Autowired 생략
 
     @GetMapping
-    public String addForm() {
-        return "excel-maker/addForm";
+    public String excelForm() {
+        return "excelmaker/form/excelForm";
     }
 
-    @PostMapping("/check")
+    @PostMapping("/info")
     public String check(Model model, @RequestParam("contractDate") String contractDate, @RequestParam("customerName") String customerName, @RequestParam("belong") String belong, @RequestParam("carName") String carName,
-                                   @RequestParam("carPrice") Integer carPrice, @RequestParam("releaseStore") String releaseStore, @RequestParam("charge") Integer charge, @RequestParam("progress") String progress,
+                                   @RequestParam("carPrice") Integer carPrice, @RequestParam("releaseStore") String releaseStore, @RequestParam("charge") Double charge, @RequestParam("progress") String progress,
                                    @RequestParam("cashBack") Integer cashBack, @RequestParam("releasePlace") String releasePlace, @RequestParam("supportContents") String supportContents, @RequestParam("etcContents") String etcContents,
                                    @RequestParam("enrollDate") String enrollDate, @RequestParam("carNumber") String carNumber) throws IOException {
 
@@ -40,13 +40,13 @@ public class ExcelMakerController {
         model.addAttribute("inputData", inputData);
 
 
-        return "excel-maker/check";
+        return "excelmaker/form/checkForm";
     }
 
-    @PostMapping("/make")
+    @PostMapping("/file")
     public String make(Model model, @RequestParam("contractDate") String contractDate, @RequestParam("customerName") String customerName, @RequestParam("belong") String belong,
                              @RequestParam("carName") String carName, @RequestParam("carPrice") Integer carPrice, @RequestParam("releaseStore") String releaseStore,
-                             @RequestParam("charge") Integer charge, @RequestParam("progress") String progress, @RequestParam("cashBack") Integer cashBack,
+                             @RequestParam("charge") Double charge, @RequestParam("progress") String progress, @RequestParam("cashBack") Integer cashBack,
                              @RequestParam("releasePlace") String releasePlace, @RequestParam("supportContents") String supportContents, @RequestParam("etcContents") String etcContents,
                              @RequestParam("enrollDate") String enrollDate, @RequestParam("carNumber") String carNumber) throws IOException {
 
@@ -54,13 +54,21 @@ public class ExcelMakerController {
 
         model.addAttribute("inputData", inputData);
 
-        String filePath = "C:\\myDev\\mine.xlsx";
-        File file = new File(filePath);
+        String folderName = "C:\\CarMasterFolder\\";
+        String excelName = "CustomerData.xlsx";
+        File file = new File(folderName);
 
-        if(file.exists()){
-            excelMakerService.updateFile(inputData, filePath);
+        // 해당 디렉토리가 없을경우 디렉토리를 생성합니다.
+        if (!file.exists()) {
+            file.mkdir(); //폴더 생성합니다.
+            excelMakerService.createFile(inputData, folderName + excelName);
         } else {
-            excelMakerService.createFile(inputData, filePath);
+            File excel = new File(folderName + excelName);
+            if (!excel.exists()) {
+                excelMakerService.createFile(inputData, folderName + excelName);
+            } else {
+                excelMakerService.updateFile(inputData, folderName + excelName);
+            }
         }
 
         //새로고침으로 인한 POST 중복 요청을 방지하기 위한 PRG 처리

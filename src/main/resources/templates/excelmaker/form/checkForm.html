@@ -19,16 +19,16 @@
 <nav id="navbar-example2" class="navbar bg-success px-3 mb-3">
     <a class="navbar-brand text-white fs-2 text">Excel Maker<span style="font-size:50%;"> for Car Master</span></a>
 </nav>
-<form action="/excel-maker/make" method="post">
+<form action="/excelmaker/file" method="post">
     <div style="width:50%; margin:0 auto;">
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading1">계약일</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="contractDate" name="contractDate" class="datepicker mr-2" th:value="${inputData.contractDate}" readonly>
+            <input type="text" id="contractDate" name="contractDate" class="datepicker mr-2" th:value="${inputData.contractDate}" readonly>에 계약
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading2">고객명</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="customerName" name="customerName" th:value="${inputData.customerName}" readonly>
+            <input type="text" id="customerName" name="customerName" th:value="${inputData.customerName}" readonly> 님
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
@@ -43,7 +43,7 @@
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading5">가격</h6><hr style="border-top:1px solid black;">
-            <input type="number" id="carPrice" name="carPrice" th:value="${inputData.carPrice}" readonly>원
+            <input type="number" id="carPrice" name="carPrice" th:value="${inputData.carPrice}" readonly> 원
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
@@ -52,8 +52,8 @@
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
-            <h6 id="scrollspyHeading7">수수료(자동계산)</h6><hr style="border-top:1px solid black;">
-            <input type="number" id="charge" name="charge" th:value="${inputData.charge}" readonly>
+            <h6 id="scrollspyHeading7">수수료(수령금액)</h6><hr style="border-top:1px solid black;">
+            <input type="number" id="charge" name="charge" th:value="${inputData.carPrice}*${inputData.charge}/100" readonly> 원 수령 예정
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
@@ -63,7 +63,7 @@
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading9">고객캐쉬백</h6><hr style="border-top:1px solid black;">
-            <input type="number" id="cashBack" name="cashBack" th:value="${inputData.cashBack}" readonly>원
+            <input type="number" id="cashBack" name="cashBack" th:value="${inputData.cashBack}" readonly> 원
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
