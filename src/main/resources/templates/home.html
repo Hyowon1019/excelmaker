@@ -14,14 +14,9 @@
 </head>
 <body>
 <div class="row1">
-    <button type="button" th:onclick="|location.href='@{/excelmaker}'|" class="btn btn-success" disabled>엑셀 생성기 시작</button>
+    <button type="button" th:onclick="|location.href='@{/excelmaker/form}'|" class="btn btn-success" disabled>엑셀 생성기 시작</button>
     <button class="btn btn-primary" type="button" th:onclick="|location.href='@{/login}'|">로그인</button>
     <button class="btn btn-warning" type="button" th:onclick="|location.href='@{/members/add}'|">회원 가입</button>
 </div>
 </body>
-<script>
-  function goExcelMaker() {
-    location.href="/excelmaker";
-  }
-</script>
 </html>

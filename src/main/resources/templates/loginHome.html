@@ -15,7 +15,7 @@
 <body>
 <h4 class="mb-3" th:text="|${member.name}(${member.belong})|">회원명(소속)</h4>
 <div class="row1">
-    <button type="button" th:onclick="|location.href='@{/excelmaker}'|" class="btn btn-success">엑셀 생성기 시작</button>
+    <button type="button" th:onclick="|location.href='@{/excelmaker/form}'|" class="btn btn-success">엑셀 생성기 시작</button>
     <br>
     <form th:action="@{/logout}" method="post">
         <button class="btn btn-danger" type="submit">
@@ -24,9 +24,4 @@
     </form>
 </div>
 </body>
-<script>
-  function goExcelMaker() {
-    location.href="/excelmaker";
-  }
-</script>
 </html>

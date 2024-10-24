@@ -20,83 +20,82 @@
 <nav id="navbar-example2" class="navbar bg-success px-3 mb-3">
     <a class="navbar-brand text-white fs-2 text">Excel Maker<span style="font-size:50%;"> for Car Master</span></a>
 </nav>
-<form action="/excelmaker/info" method="post">
+<form action="" th:action method="post" th:object="${excelData}">
     <div style="width:50%; margin:0 auto;">
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading1">계약일</h6><hr style="border-top:1px solid black;">
             <div class="form-group">
-                <input type="text" id="contractDate" name="contractDate" class="datepicker mr-2" placeholder="날짜 선택">에 계약
+                <input type="text" id="contractDate" name="contractDate" th:field="*{contractDate}" class="datepicker mr-2" placeholder="날짜 선택">에 계약
             </div>
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading2">고객명</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="customerName" name="customerName"> 님
+            <input type="text" id="customerName" name="customerName" th:field="*{customerName}"> 님
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading3">소속/납기</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="belong" name="belong">
+            <input type="text" id="belong" name="belong" th:field="*{belong}">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading4">차종</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="carName" name="carName">
+            <input type="text" id="carName" name="carName" th:field="*{carName}">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading5">가격</h6><hr style="border-top:1px solid black;">
-            <input type="number" id="carPrice" name="carPrice"> 원
+            <input type="number" id="carPrice" name="carPrice" th:field="*{carPrice}"> 원
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading6">출고점</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="releaseStore" name="releaseStore">
+            <input type="text" id="releaseStore" name="releaseStore" th:field="*{releaseStore}">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading7">수수료(%) 입력</h6><hr style="border-top:1px solid black;">
-            <input type="number" step="0.1" id="charge" name="charge"> %
+            <input type="number" step="0.1" id="charge" name="charge" th:field="*{charge}"> %
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading8">진행도</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="progress" name="progress">
+            <input type="text" id="progress" name="progress" th:field="*{progress}">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading9">고객캐쉬백</h6><hr style="border-top:1px solid black;">
-            <input type="number" id="cashBack" name="cashBack"> 원
+            <input type="number" id="cashBack" name="cashBack" th:field="*{cashBack}"> 원
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading10">코일/출고장</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="releasePlace" name="releasePlace">
+            <input type="text" id="releasePlace" name="releasePlace" th:field="*{releasePlace}">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading11">지원내용</h6><hr style="border-top:1px solid black;">
-            <textarea id="supportContents" name="supportContents"></textarea>
+            <textarea id="supportContents" name="supportContents" th:field="*{supportContents}"></textarea>
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading12">기타내용</h6><hr style="border-top:1px solid black;">
-            <textarea id="etcContents" name="etcContents"></textarea>
+            <textarea id="etcContents" name="etcContents" th:field="*{etcContents}"></textarea>
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading13">등록일/완결</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="enrollDate" name="enrollDate">
+            <input type="text" id="enrollDate" name="enrollDate" th:field="*{enrollDate}">
         </div>
         <br>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example border border-success p-3 rounded-2" tabindex="0">
             <h6 id="scrollspyHeading14">차량번호</h6><hr style="border-top:1px solid black;">
-            <input type="text" id="carNumber" name="carNumber">
+            <input type="text" id="carNumber" name="carNumber" th:field="*{carNumber}">
         </div>
         <br>
-        <button type="submit" class="btn btn-outline-success" style="width:49%;">입력</button>
+        <button type="submit" class="btn btn-outline-success" style="width:49%;">엑셀저장</button>
         <button type="reset" class="btn btn-outline-danger" style="width:49%;">초기화</button>
-
     </div>
 </form>
 <br>
