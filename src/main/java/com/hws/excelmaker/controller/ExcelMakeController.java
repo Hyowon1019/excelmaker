@@ -1,12 +1,8 @@
 package com.hws.excelmaker.controller;
 
-import com.hws.excelmaker.domain.ExcelData;
+import com.hws.excelmaker.form.ExcelMakeForm;
 import com.hws.excelmaker.service.ExcelMakerService;
 import lombok.RequiredArgsConstructor;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,20 +10,19 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 @Controller
 @RequestMapping("/excelmaker")
 @RequiredArgsConstructor
-public class ExcelMakerController {
+public class ExcelMakeController {
 
     private final ExcelMakerService excelMakerService;
 
     //생성자 하나이므로 @Autowired 생략
 
     @GetMapping("/form")
-    public String excelForm(@ModelAttribute(name = "excelData") ExcelData excelData) {
+    public String excelMakeForm(@ModelAttribute(name = "excelMakeForm") ExcelMakeForm excelMakeForm) {
         return "excelmaker/form/excelForm";
     }
 
@@ -39,7 +34,7 @@ public class ExcelMakerController {
                              @RequestParam("releasePlace") String releasePlace, @RequestParam("supportContents") String supportContents, @RequestParam("etcContents") String etcContents,
                              @RequestParam("enrollDate") String enrollDate, @RequestParam("carNumber") String carNumber) throws IOException {
 
-        ExcelData inputData = new ExcelData(contractDate, customerName, belong, carName, carPrice, releaseStore, charge, progress, cashBack, releasePlace, supportContents, etcContents, enrollDate,carNumber);
+        ExcelMakeForm inputData = new ExcelMakeForm(contractDate, customerName, belong, carName, carPrice, releaseStore, charge, progress, cashBack, releasePlace, supportContents, etcContents, enrollDate,carNumber);
 
         model.addAttribute("inputData", inputData);
 
@@ -65,13 +60,13 @@ public class ExcelMakerController {
     }
 
     @PostMapping("/form")
-    public String make(@Validated @ModelAttribute(name = "excelData") ExcelData excelData, BindingResult bindingResult) throws IOException {
+    public String formToExcel(@Validated @ModelAttribute(name = "excelMakeForm") ExcelMakeForm excelMakeForm, BindingResult bindingResult) throws IOException {
 
         if(bindingResult.hasErrors()) {
             return "excelmaker/form/excelForm";
         }
 
-        ExcelData inputData = new ExcelData(excelData.getContractDate(), excelData.getCustomerName(), excelData.getBelong(), excelData.getCarName(), excelData.getCarPrice(), excelData.getReleaseStore(), excelData.getCarPrice()*excelData.getCharge()/100, excelData.getProgress(), excelData.getCashBack(), excelData.getReleasePlace(), excelData.getSupportContents(), excelData.getEtcContents(), excelData.getEnrollDate(),excelData.getCarNumber());
+        ExcelMakeForm inputData = new ExcelMakeForm(excelMakeForm.getContractDate(), excelMakeForm.getCustomerName(), excelMakeForm.getBelong(), excelMakeForm.getCarName(), excelMakeForm.getCarPrice(), excelMakeForm.getReleaseStore(), excelMakeForm.getCarPrice()* excelMakeForm.getCharge()/100, excelMakeForm.getProgress(), excelMakeForm.getCashBack(), excelMakeForm.getReleasePlace(), excelMakeForm.getSupportContents(), excelMakeForm.getEtcContents(), excelMakeForm.getEnrollDate(), excelMakeForm.getCarNumber());
 
         String folderName = "C:\\CarMasterFolder\\";
         String excelName = "CustomerData.xlsx";

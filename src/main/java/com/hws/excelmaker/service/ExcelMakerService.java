@@ -1,25 +1,18 @@
 package com.hws.excelmaker.service;
 
-import com.hws.excelmaker.domain.ExcelData;
-import lombok.RequiredArgsConstructor;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.util.HSSFColor;
+import com.hws.excelmaker.form.ExcelMakeForm;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
-import java.awt.*;
-import java.awt.Color;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 @Service
 public class ExcelMakerService {
 
-    public void createFile(ExcelData excelData, String fileInfo) throws IOException {
+    public void createFile(ExcelMakeForm excelMakeForm, String fileInfo) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         CellStyle headCellStyle = workbook.createCellStyle();
         headCellStyle.setBorderLeft(BorderStyle.DOUBLE);
@@ -82,20 +75,20 @@ public class ExcelMakerService {
         title.getCell(13).setCellStyle(headCellStyle);
 
 
-        row1.createCell(0).setCellValue(excelData.getContractDate());
-        row1.createCell(1).setCellValue(excelData.getCustomerName());
-        row1.createCell(2).setCellValue(excelData.getBelong());
-        row1.createCell(3).setCellValue(excelData.getCarName());
-        row1.createCell(4).setCellValue(excelData.getCarPrice());
-        row1.createCell(5).setCellValue(excelData.getReleaseStore());
-        row1.createCell(6).setCellValue(excelData.getCharge());
-        row1.createCell(7).setCellValue(excelData.getProgress());
-        row1.createCell(8).setCellValue(excelData.getCashBack());
-        row1.createCell(9).setCellValue(excelData.getReleasePlace());
-        row1.createCell(10).setCellValue(excelData.getSupportContents());
-        row1.createCell(11).setCellValue(excelData.getEtcContents());
-        row1.createCell(12).setCellValue(excelData.getEnrollDate());
-        row1.createCell(13).setCellValue(excelData.getCarNumber());
+        row1.createCell(0).setCellValue(excelMakeForm.getContractDate());
+        row1.createCell(1).setCellValue(excelMakeForm.getCustomerName());
+        row1.createCell(2).setCellValue(excelMakeForm.getBelong());
+        row1.createCell(3).setCellValue(excelMakeForm.getCarName());
+        row1.createCell(4).setCellValue(excelMakeForm.getCarPrice());
+        row1.createCell(5).setCellValue(excelMakeForm.getReleaseStore());
+        row1.createCell(6).setCellValue(excelMakeForm.getCharge());
+        row1.createCell(7).setCellValue(excelMakeForm.getProgress());
+        row1.createCell(8).setCellValue(excelMakeForm.getCashBack());
+        row1.createCell(9).setCellValue(excelMakeForm.getReleasePlace());
+        row1.createCell(10).setCellValue(excelMakeForm.getSupportContents());
+        row1.createCell(11).setCellValue(excelMakeForm.getEtcContents());
+        row1.createCell(12).setCellValue(excelMakeForm.getEnrollDate());
+        row1.createCell(13).setCellValue(excelMakeForm.getCarNumber());
 
         FileOutputStream fos = new FileOutputStream(fileInfo);
         workbook.write(fos);
@@ -103,7 +96,7 @@ public class ExcelMakerService {
         workbook.close();
     }
 
-    public void updateFile(ExcelData excelData, String fileInfo) throws IOException {
+    public void updateFile(ExcelMakeForm excelMakeForm, String fileInfo) throws IOException {
 
         FileInputStream fis = new FileInputStream(fileInfo);
 
@@ -115,20 +108,20 @@ public class ExcelMakerService {
 
         Row row0 = sheet.createRow(lastRowNum+1);
 
-        row0.createCell(0).setCellValue(excelData.getContractDate());
-        row0.createCell(1).setCellValue(excelData.getCustomerName());
-        row0.createCell(2).setCellValue(excelData.getBelong());
-        row0.createCell(3).setCellValue(excelData.getCarName());
-        row0.createCell(4).setCellValue(excelData.getCarPrice());
-        row0.createCell(5).setCellValue(excelData.getReleaseStore());
-        row0.createCell(6).setCellValue(excelData.getCharge());
-        row0.createCell(7).setCellValue(excelData.getProgress());
-        row0.createCell(8).setCellValue(excelData.getCashBack());
-        row0.createCell(9).setCellValue(excelData.getReleasePlace());
-        row0.createCell(10).setCellValue(excelData.getSupportContents());
-        row0.createCell(11).setCellValue(excelData.getEtcContents());
-        row0.createCell(12).setCellValue(excelData.getEnrollDate());
-        row0.createCell(13).setCellValue(excelData.getCarNumber());
+        row0.createCell(0).setCellValue(excelMakeForm.getContractDate());
+        row0.createCell(1).setCellValue(excelMakeForm.getCustomerName());
+        row0.createCell(2).setCellValue(excelMakeForm.getBelong());
+        row0.createCell(3).setCellValue(excelMakeForm.getCarName());
+        row0.createCell(4).setCellValue(excelMakeForm.getCarPrice());
+        row0.createCell(5).setCellValue(excelMakeForm.getReleaseStore());
+        row0.createCell(6).setCellValue(excelMakeForm.getCharge());
+        row0.createCell(7).setCellValue(excelMakeForm.getProgress());
+        row0.createCell(8).setCellValue(excelMakeForm.getCashBack());
+        row0.createCell(9).setCellValue(excelMakeForm.getReleasePlace());
+        row0.createCell(10).setCellValue(excelMakeForm.getSupportContents());
+        row0.createCell(11).setCellValue(excelMakeForm.getEtcContents());
+        row0.createCell(12).setCellValue(excelMakeForm.getEnrollDate());
+        row0.createCell(13).setCellValue(excelMakeForm.getCarNumber());
 
         FileOutputStream fos = new FileOutputStream(fileInfo);
         workbook.write(fos);
